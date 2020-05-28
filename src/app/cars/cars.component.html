@@ -1,0 +1,59 @@
+<div class="child">
+    <label for="app-filter">Please enter a number!</label>
+    <app-filter (emitter)="getPassedValue($event)"></app-filter>
+</div>
+<br>
+<div>
+    <mat-form-field>
+        <mat-select [(ngModel)]="carType" (selected)="displayCars()">
+            <mat-option selected disabled>Select type</mat-option>
+            <mat-option value="All">All</mat-option>
+            <mat-option value="Family">Family</mat-option>
+            <mat-option value="Sport">Sport</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <mat-card>
+        <mat-card-title>{{ carType }}</mat-card-title>
+        <mat-card-content>
+            <div *ngIf="!isThereMaxNumber;else displayNewArray">
+                <p *ngFor="let car of cars">ID: {{car.id}} Manufacturer: {{car.manufacturer}} Seats:
+                    {{car.seats}} Type: {{car.type}} Color: {{car.color}}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<ng-template #displayNewArray>
+    <mat-card>
+        <!--  <mat-card-title>{{ carType }}</mat-card-title> -->
+        <p *ngFor="let car of displayByNumber()">
+            Selected type: {{carType}} ID: {{car.id}} Manufacturer: {{car.manufacturer}} Seats: {{car.seats}}
+            Type: {{car.type}} Color: {{car.color}}
+        </p>
+    </mat-card>
+</ng-template>
+<div></div>
+
+<div *ngIf="carType === 'Sport'" class="matForm">
+
+    <div class="item">
+        <input [(ngModel)]="carID" type="number" name="carID" placeholder="ID">
+    </div>
+    <div class="item">
+        <input [(ngModel)]="carManufacturer" name="carManufacturer" placeholder="Manufacturer">
+    </div>
+    <div class="item">
+        <input [(ngModel)]="carSeatNum" type="number" name="carSeatNum" placeholder="Number of seats">
+    </div>
+    <div class="item">
+        <input [(ngModel)]="givenCarType" name="givenCarType" placeholder="Car type">
+    </div>
+    <div class="item">
+        <input [(ngModel)]="carColor" id="carColor" placeholder="Color">
+    </div>
+    <div>
+        <button mat-raised-button (click)="addCar()" [disabled]="carColor.length === 0 ? true : false">Add
+            car</button>
+
+    </div>

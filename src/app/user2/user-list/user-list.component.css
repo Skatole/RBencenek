@@ -1,0 +1,7 @@
+td, th {
+  width: 35%;
+  border-color: lightgray;
+}
+mat-card {
+  width: 50%;
+}

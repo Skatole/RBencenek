@@ -1,0 +1,22 @@
+.matForm {
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+.item {
+    margin-bottom: 12px;
+    min-height: 30px;
+}
+input {
+    min-height: 25px;
+}
+input:focus {
+    transform: scale(1.06);
+}
+.child {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+button {
+    background-color: lightskyblue;
+}

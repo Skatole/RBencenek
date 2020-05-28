@@ -1,0 +1,61 @@
+<div>
+    <mat-card>
+        <mat-card-title>Edit user</mat-card-title>
+        <form #userForm="ngForm">
+            <div>
+                <mat-form-field appearance="outline" color="accent" >
+                    <mat-label>Name</mat-label>
+                    <input type="text" 
+                    matInput name="name" required maxlength="30" 
+                    [ngModel]="user.name" #name="ngModel" [(value)]="nameInput">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" color="accent" >
+                    <mat-label>Age</mat-label>
+                    <input type="text" matInput name="age" required [ngModel]="user.age" #age="ngModel">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-label ngModel #gender="ngModel" name="gender" [ngModel]="user.gender"
+                ngDefaultControl>Gender</mat-label>
+                <br>
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+            </div>
+            <br>
+            <div>
+                <mat-form-field appearance="outline" color="accent" >
+                    <mat-label>Address</mat-label>
+                    <input type="text" matInput name="address" required [ngModel]="user.address" #address="ngModel">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-select placeholder="Position" 
+                    required [ngModel]="user.position" #position="ngModel" name="position"
+                    appearance="outline" color="accent">
+                        <mat-option value="leader" >Leader</mat-option>
+                        <mat-option value="manager" >Project manager</mat-option>
+                        <mat-option value="developer" >Developer</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Description</mat-label>
+                    <br>
+                    <textarea name="comments" matInput cols="30" rows="10"
+                    [ngModel]="user.description" #name="ngModel"
+                    color="accent"
+                    appearance="outline"></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="accent" (click)="addUser(user, userForm)" [disabled]="userForm.invalid">Save edits</button>
+                <button mat-raised-button color="warn" (click)="resetForm(userForm)" >Cancel</button>
+            </div>
+        </form>
+
+    </mat-card>
+</div>

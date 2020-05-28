@@ -1,0 +1,6 @@
+<app-user-list></app-user-list>
+<div>
+    <button *ngIf="!user"
+    mat-raised-button color="warn" (click)="visible()" >New User</button>
+    <app-new-user *ngIf="visibility" ></app-new-user>
+</div>

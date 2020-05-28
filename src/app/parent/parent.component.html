@@ -1,0 +1,27 @@
+ <p appFirstDirective>{{ piece }}</p>
+<div>
+    <app-child (addOne)="addOneToPiece($event)" (subValue)="substractOne($event)"
+        (fruitChange)="changeArrayIndex($event)" (addFruit)="addItemToArray($event)"></app-child>
+</div>
+<div *ngFor="let fruit of fruitArray; let i = index">
+    <p *ngIf="i === arrayIndex" id="pls" #pls>{{ fruit }}</p>
+
+</div>
+<br>
+<p>FruitArray</p>
+<div *ngFor="let fruit of fruitArray; let i = index; let first = first">
+    <p *ngIf="first" appFirstBold>{{ fruit }}</p>
+    <p *ngIf="i % 2 === 0;else changeColor">{{ fruit }}</p>
+    <ng-template #changeColor>
+        <p appRedColor>{{ fruit }}</p>
+    </ng-template>
+
+</div>
+<div>
+    <p>viewchild</p>
+    <input type="text" #myc>
+    <button (click)="writeOnConsole()">IDK</button>
+</div> 
+<div>
+    <button (click)="displayFruit()">Display fruit on console</button>
+</div>

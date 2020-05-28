@@ -1,0 +1,81 @@
+<p>fruits works!</p>
+<div>
+    <form  #fruitForm="ngForm">
+        <fieldset>
+            <div>
+                <label for="name">Name <input type="text" 
+                    name="name" 
+                    #name="ngModel"
+                    ngModel
+                    required
+                    minlength="4"
+                    maxlength="15"></label>
+                    <br>
+              <small *ngIf="name.invalid && name.touched" [ngStyle]="{color: 'red'}"> Invalid name input!</small>
+            </div>
+            <div>
+                <label for="color">Color <input type="text" 
+                    name="color" 
+                    #color="ngModel"
+                    ngModel></label>
+            </div>
+            <div>
+                <label for="calories">Calories <input type="number" 
+                    name="calories" 
+                    #calories="ngModel"
+                    [ngModel]="calories"></label>
+                    <br>
+                    <small *ngIf="calories.value > 100" [ngStyle]="{color: 'yellow'}">Too much calories</small>
+            </div>
+            <div>
+                <select name="size" [ngModel]="size" #size="ngModel" required>
+                    <option value="null" disabled selected >Please choose size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="big">Big</option>
+                    <option value="banana">Banana</option>
+                </select>
+    
+            </div>
+        </fieldset>
+ 
+        <button (click)="log(fruitForm)" [disabled]="fruitForm.invalid">Save</button>
+
+    </form>
+    <mat-card>
+        <mat-card-title>Fruits</mat-card-title>
+        <mat-card-content>
+            <div>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput
+                    required>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Color</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Calories</mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" color="accent">
+                  <!--   <mat-label>Size</mat-label> -->
+                    <mat-select required placeholder="Please select size">
+                        <!-- <mat-option selected disabled>Please choose size</mat-option> -->
+                        <mat-option>Small</mat-option>
+                        <mat-option>Medium</mat-option>
+                        <mat-option>Big</mat-option>
+                        <mat-option>Banana</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
